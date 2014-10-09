@@ -25,14 +25,11 @@ app.get("/api/users", function (req, res) {
 });
 
 
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
-var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-
-
+var port      = process.env.PORT || 3000;
 
 var server = http.createServer(app);
 
-server.listen( port,ipaddress, function() {
+server.listen( port, function() {
     console.log((new Date()) + ' Server is listening on port 8080');
 });
 
