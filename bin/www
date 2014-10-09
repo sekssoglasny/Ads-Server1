@@ -1,9 +1,22 @@
 #!/usr/bin/env node
 var debug = require('debug')('Ads-Server1');
 var app = require('../app');
+var http = require('http');
 
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
+
+
+var minutes = 30, the_interval = minutes * 60 * 1000;
+
+setInterval(function() {
+    var options = {
+        host: 'sekssoglasny.herokuapp.com'
+    };
+    http.get(options, function (http_res) {
+        console.log("Sent http request to sekssoglasny.herokuapp.com to stay awake.");
+    });
+}, the_interval);
